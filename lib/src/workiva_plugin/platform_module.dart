@@ -1,9 +1,11 @@
 import 'package:extensions_playground/src/workiva_plugin/extension_points/command_extension_point.dart';
 import 'package:extensions_playground/src/workiva_plugin/extension_points/handler_extension_point.dart';
 import 'package:extensions_playground/src/workiva_plugin/extension_points/menu_extension_point.dart';
+import 'package:extensions_playground/src/workiva_plugin/extension_points/view_extension_point.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/command_service.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/handler_service.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/menu_service.dart';
+import 'package:extensions_playground/src/workiva_plugin/services/view_service.dart';
 import 'package:inject/inject.dart';
 import 'package:plugin/plugin.dart';
 
@@ -34,6 +36,11 @@ class PlatformModule {
 
   @provide
   @singleton
+  ViewExtensionPoint provideViewExtensionPoint(Plugin plugin) =>
+      new ViewExtensionPoint(plugin);
+
+  @provide
+  @singleton
   CommandService provideCommandService(CommandExtensionPoint commands) =>
       new CommandServiceImpl(commands);
 
@@ -47,4 +54,9 @@ class PlatformModule {
   @singleton
   MenuService provideMenuService(MenuExtensionPoint menus) =>
       new MenuServiceImpl(menus);
+
+  @provide
+  @singleton
+  ViewService provideViewService(ViewExtensionPoint views) =>
+      new ViewServiceImpl(views);
 }

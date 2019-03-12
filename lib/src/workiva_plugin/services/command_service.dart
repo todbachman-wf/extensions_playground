@@ -3,10 +3,6 @@ import 'package:inject/inject.dart';
 
 CommandService commandService;
 
-abstract class Command {
-  String get identifier;
-}
-
 abstract class CommandService {
   bool isRegistered(String commandId);
 }

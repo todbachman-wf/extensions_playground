@@ -34,9 +34,12 @@ class FormattingPlugin extends Plugin {
     register(_container.getHandlersExtensionPointId(),
         _container.getItalicHandler());
 
-    // UI elements
+    // menus
     register(_container.getMenusExtensionPointId(), _container.getBoldButton());
     register(
         _container.getMenusExtensionPointId(), _container.getItalicButton());
+    
+    // views
+    register(_container.getViewsExtensionPointId(), _container.getFormattingView());
   }
 }

@@ -1,11 +1,10 @@
 import 'package:extensions_playground/src/workiva_plugin/constants.dart';
 import 'package:extensions_playground/src/workiva_plugin/extension_points/workiva_extension_point.dart';
-import 'package:extensions_playground/src/workiva_plugin/services/command.dart';
+import 'package:extensions_playground/src/workiva_plugin/services/view.dart';
 import 'package:inject/inject.dart';
 import 'package:plugin/plugin.dart';
 
-class CommandExtensionPoint extends WorkivaExtensionPoint<Command> {
+class ViewExtensionPoint extends WorkivaExtensionPoint<View> {
   @provide
-  CommandExtensionPoint(Plugin plugin)
-      : super(plugin, commandsExtensionPointId);
+  ViewExtensionPoint(Plugin plugin) : super(plugin, viewsExtensionPointId);
 }

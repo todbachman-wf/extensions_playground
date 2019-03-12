@@ -4,6 +4,7 @@ import 'package:extensions_playground/src/formatting_plugin/handlers/bold_handle
 import 'package:extensions_playground/src/formatting_plugin/handlers/italic_handler.dart';
 import 'package:extensions_playground/src/formatting_plugin/menus/bold_button.dart';
 import 'package:extensions_playground/src/formatting_plugin/menus/italic_button.dart';
+import 'package:extensions_playground/src/formatting_plugin/views/formatting_view.dart';
 import 'package:extensions_playground/src/workiva_plugin/platform_services_module.dart';
 import 'package:inject/inject.dart';
 
@@ -34,6 +35,9 @@ abstract class Formatting {
   ItalicHandler getItalicHandler();
 
   @provide
+  FormattingView getFormattingView();
+
+  @provide
   @commandsExtensionPointId
   String getCommandsExtensionPointId();
 
@@ -44,4 +48,8 @@ abstract class Formatting {
   @provide
   @menusExtensionPointId
   String getMenusExtensionPointId();
+
+  @provide
+  @viewsExtensionPointId
+  String getViewsExtensionPointId();
 }

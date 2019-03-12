@@ -1,10 +1,12 @@
 import 'package:extensions_playground/src/workiva_plugin/extension_points/command_extension_point.dart';
 import 'package:extensions_playground/src/workiva_plugin/extension_points/handler_extension_point.dart';
 import 'package:extensions_playground/src/workiva_plugin/extension_points/menu_extension_point.dart';
+import 'package:extensions_playground/src/workiva_plugin/extension_points/view_extension_point.dart';
 import 'package:extensions_playground/src/workiva_plugin/platform_module.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/command_service.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/handler_service.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/menu_service.dart';
+import 'package:extensions_playground/src/workiva_plugin/services/view_service.dart';
 import 'package:inject/inject.dart';
 
 import 'platform_container.inject.dart' as generated;
@@ -18,6 +20,7 @@ abstract class Platform {
     commandService = platform.getCommandService();
     handlerService = platform.getHandlerService();
     menuService = platform.getMenuService();
+    viewService = platform.getViewService();
 
     return platform;
   }
@@ -32,6 +35,9 @@ abstract class Platform {
   MenuExtensionPoint getMenuExtensionPoint();
 
   @provide
+  ViewExtensionPoint getViewExtensionPoint();
+
+  @provide
   CommandService getCommandService();
 
   @provide
@@ -39,4 +45,7 @@ abstract class Platform {
 
   @provide
   MenuService getMenuService();
+
+  @provide
+  ViewService getViewService();
 }

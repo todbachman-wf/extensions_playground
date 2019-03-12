@@ -3,7 +3,7 @@ import 'dart:html' hide Platform;
 import 'package:extensions_playground/src/formatting_plugin/commands/formatting_command.dart';
 import 'package:extensions_playground/src/formatting_plugin/services/formatting_service.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/handler_service.dart';
-import 'package:extensions_playground/src/workiva_plugin/services/menu_service.dart';
+import 'package:extensions_playground/src/workiva_plugin/services/menu.dart';
 import 'package:inject/inject.dart';
 
 class BoldButton implements Menu {

@@ -5,10 +5,6 @@ import 'package:inject/inject.dart';
 
 MenuService menuService;
 
-abstract class Menu {
-  Element get component;
-}
-
 abstract class MenuService {
   Iterable<Element> getAllMenuItems();
 }

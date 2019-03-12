@@ -1,5 +1,3 @@
-import 'dart:html' show querySelector;
-
 import 'package:plugin/manager.dart';
 import 'package:extensions_playground/extensions_playground.dart';
 
@@ -17,5 +15,5 @@ Future<Null> main() async {
   ]);
 
   var shell = await Shell.create(new PlatformServicesModule());
-  shell.getShell().render(querySelector('#shell'));
+  shell.getShell().render();
 }

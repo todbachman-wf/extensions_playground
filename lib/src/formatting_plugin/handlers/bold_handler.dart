@@ -1,6 +1,6 @@
 import 'package:extensions_playground/src/formatting_plugin/commands/formatting_command.dart';
 import 'package:extensions_playground/src/formatting_plugin/services/formatting_service.dart';
-import 'package:extensions_playground/src/workiva_plugin/services/handler_service.dart';
+import 'package:extensions_playground/src/workiva_plugin/services/handler.dart';
 import 'package:inject/inject.dart';
 
 class BoldHandler implements Handler {

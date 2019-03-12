@@ -1,14 +1,15 @@
-import 'package:extensions_playground/src/workiva_plugin/constants.dart'
-    as constants;
+import 'package:extensions_playground/src/workiva_plugin/constants.dart' as constants;
 import 'package:extensions_playground/src/workiva_plugin/services/command_service.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/handler_service.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/menu_service.dart';
+import 'package:extensions_playground/src/workiva_plugin/services/view_service.dart';
 import 'package:inject/inject.dart';
 
 const workivaPluginId = const Qualifier(#workivaPluginId);
 const commandsExtensionPointId = const Qualifier(#commandsExtensionPointId);
 const handlersExtensionPointId = const Qualifier(#handlersExtensionPointId);
 const menusExtensionPointId = const Qualifier(#menusExtensionPointId);
+const viewsExtensionPointId = const Qualifier(#viewsExtensionPointId);
 
 @module
 class PlatformServicesModule {
@@ -32,6 +33,11 @@ class PlatformServicesModule {
       '$pluginId.${constants.menusExtensionPointId}';
 
   @provide
+  @viewsExtensionPointId
+  String provideViewsExtensionPointId(@workivaPluginId String pluginId) =>
+      '$pluginId.${constants.viewsExtensionPointId}';
+
+  @provide
   CommandService provideCommandService() => commandService;
 
   @provide
@@ -39,4 +45,7 @@ class PlatformServicesModule {
 
   @provide
   MenuService provideMenuService() => menuService;
+
+  @provide
+  ViewService provideViewService() => viewService;
 }

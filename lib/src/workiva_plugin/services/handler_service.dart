@@ -4,11 +4,6 @@ import 'package:inject/inject.dart';
 
 HandlerService handlerService;
 
-abstract class Handler {
-  String get commandId;
-  void execute();
-}
-
 abstract class HandlerService {
   void executeCommand(String commandId);
 }

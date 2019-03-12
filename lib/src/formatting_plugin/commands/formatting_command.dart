@@ -1,4 +1,4 @@
-import 'package:extensions_playground/src/workiva_plugin/services/command_service.dart';
+import 'package:extensions_playground/src/workiva_plugin/services/command.dart';
 import 'package:inject/inject.dart';
 
 const boldCommand = const Qualifier(#boldCommand);
