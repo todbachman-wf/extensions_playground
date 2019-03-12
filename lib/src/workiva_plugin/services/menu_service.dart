@@ -6,7 +6,7 @@ import 'package:inject/inject.dart';
 MenuService menuService;
 
 abstract class MenuService {
-  Iterable<Element> getAllMenuItems();
+  Iterable<Element> getMenuItems(String location);
 }
 
 class MenuServiceImpl implements MenuService {
@@ -16,6 +16,9 @@ class MenuServiceImpl implements MenuService {
   MenuServiceImpl(this._menus);
 
   @override
-  Iterable<Element> getAllMenuItems() =>
-      _menus.extensionPoint.extensions.map((menu) => menu.component);
+  Iterable<Element> getMenuItems(String location) =>
+      _menus.extensionPoint.extensions
+          .where((menu) =>
+              menu.location.scheme == 'menu' && menu.location.host == location)
+          .map((menu) => menu.component);
 }

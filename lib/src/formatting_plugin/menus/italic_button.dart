@@ -11,6 +11,7 @@ class ItalicButton implements Menu {
   ButtonElement _element;
   FormattingService _formattingService;
   HandlerService _handlerService;
+  final Uri _location = Uri.parse('menu://workiva.rich.toolbars.edit');
 
   @provide
   ItalicButton(this._formattingService, this._handlerService,
@@ -27,6 +28,9 @@ class ItalicButton implements Menu {
     }
     return _element;
   }
+
+  @override
+  Uri get location => _location;
 
   void _handleButtonClick(MouseEvent _) =>
       _handlerService.executeCommand(_commandId);

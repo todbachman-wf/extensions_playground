@@ -6,7 +6,7 @@ import 'package:inject/inject.dart';
 ViewService viewService;
 
 abstract class ViewService {
-  Iterable<Element> getAllViewItems();
+  Iterable<Element> getViewItems(String location);
 }
 
 class ViewServiceImpl implements ViewService {
@@ -16,6 +16,9 @@ class ViewServiceImpl implements ViewService {
   ViewServiceImpl(this._views);
 
   @override
-  Iterable<Element> getAllViewItems() =>
-      _views.extensionPoint.extensions.map((view) => view.component);
+  Iterable<Element> getViewItems(String location) =>
+      _views.extensionPoint.extensions
+          .where((view) =>
+              view.location.scheme == 'view' && view.location.host == location)
+          .map((view) => view.component);
 }

@@ -8,6 +8,7 @@ class FormattingView implements View {
   DivElement _element;
   SpanElement _boldElement;
   SpanElement _italicElement;
+  final Uri _location = Uri.parse('view://workiva.rich.panels.right');
 
   final FormattingService _formattingService;
 
@@ -21,10 +22,16 @@ class FormattingView implements View {
     if (_element == null) {
       _boldElement = new SpanElement()..text = _getBoldText();
       _italicElement = new SpanElement()..text = _getItalicText();
-      _element = new DivElement()..append(_boldElement)..append(new BRElement())..append(_italicElement);
+      _element = new DivElement()
+        ..append(_boldElement)
+        ..append(new BRElement())
+        ..append(_italicElement);
     }
     return _element;
   }
+
+  @override
+  Uri get location => _location;
 
   void _handleFormattingDidChange(Null _) {
     if (_element == null) return;

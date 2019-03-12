@@ -12,12 +12,15 @@ class AppShell {
   AppShell(this._menuService, this._viewService);
 
   void render() {
-    _renderToolbars(querySelector('#toolbar'));
-    _renderPanels(querySelector('#panel-right'));
+    _renderToolbars();
+    _renderPanel('left');
+    _renderPanel('right');
   }
 
-  void _renderToolbars(Element target) {
-    _menuService.getAllMenuItems().forEach((element) {
+  void _renderToolbars() {
+    var target = querySelector('#toolbar');
+
+    _menuService.getMenuItems('workiva.rich.toolbars.edit').forEach((element) {
       var wrapper = new DivElement()
         ..className = 'toolbar-item'
         ..append(element);
@@ -25,8 +28,12 @@ class AppShell {
     });
   }
 
-  void _renderPanels(Element target) {
-    _viewService.getAllViewItems().forEach((element) {
+  void _renderPanel(String orientation) {
+    var target = querySelector('#panel-$orientation');
+
+    _viewService
+        .getViewItems('workiva.rich.panels.$orientation')
+        .forEach((element) {
       var wrapper = new DivElement()
         ..className = 'panel-item'
         ..append(element);
