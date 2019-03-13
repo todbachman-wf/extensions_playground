@@ -1,3 +1,5 @@
+export 'src/workiva_plugin/extension_points/workiva_extension_point.dart'
+    show WorkivaExtensionPoint;
 export 'src/workiva_plugin/platform_services_module.dart'
     show
         commandExtensionPointId,

@@ -1,4 +1,5 @@
 import 'package:extensions_playground/src/selection_plugin/commands/selection_commands.dart';
+import 'package:extensions_playground/src/selection_plugin/extension_points/selection_provider_extension_point.dart';
 import 'package:extensions_playground/src/selection_plugin/selection_commands_module.dart';
 import 'package:extensions_playground/src/selection_plugin/selection_module.dart';
 import 'package:extensions_playground/src/selection_plugin/services/selection_service.dart';
@@ -33,6 +34,9 @@ abstract class Selection {
   @provide
   @commandExtensionPointId
   String getCommandsExtensionPointId();
+
+  @provide
+  SelectionProviderExtensionPoint getSelectionProviderExtensionPoint();
 
   @provide
   @singleton

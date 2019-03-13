@@ -15,11 +15,13 @@ class SelectionPlugin extends Plugin {
 
   Future<Null> init() async {
     _container = await Selection.create(new PlatformServicesModule(),
-        new SelectionCommandsModule(), new SelectionModule());
+        new SelectionCommandsModule(), new SelectionModule(this));
   }
 
   @override
-  void registerExtensionPoints(RegisterExtensionPoint register) {}
+  void registerExtensionPoints(RegisterExtensionPoint register) {
+    register(_container.getSelectionProviderExtensionPoint().extensionPoint);
+  }
 
   @override
   void registerExtensions(RegisterExtension register) {

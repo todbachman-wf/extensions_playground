@@ -1,6 +1,7 @@
 import 'dart:html' hide Platform;
 
 import 'package:extensions_playground/selection_plugin.dart';
+import 'package:extensions_playground/src/document_plugin/providers/document_selection_provider.dart';
 import 'package:extensions_playground/workiva_plugin.dart';
 import 'package:inject/inject.dart';
 
@@ -25,12 +26,12 @@ class DocumentView implements View {
   towards the ocean with me.
   ''';
 
-  final SelectionService _selectionService;
+  final DocumentSelectionProvider _selectionProvider;
   final ContextService _contextService;
 
   @provide
-  DocumentView(this._selectionService, this._contextService) {
-    _selectionService.didChange.listen(_handleFormattingDidChange);
+  DocumentView(this._selectionProvider, this._contextService) {
+    _selectionProvider.didChange.listen(_handleFormattingDidChange);
   }
 
   @override
@@ -61,7 +62,7 @@ class DocumentView implements View {
       ..fontStyle = _getFontStyle();
   }
 
-  String _getFontWeight() => _selectionService.isBold ? 'bold' : 'normal';
+  String _getFontWeight() => _selectionProvider.isBold ? 'bold' : 'normal';
 
-  String _getFontStyle() => _selectionService.isItalic ? 'italic' : 'normal';
+  String _getFontStyle() => _selectionProvider.isItalic ? 'italic' : 'normal';
 }

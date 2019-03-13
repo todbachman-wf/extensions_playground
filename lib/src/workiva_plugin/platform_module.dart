@@ -18,7 +18,6 @@ class PlatformModule {
   PlatformModule(this._plugin);
 
   @provide
-  @singleton
   Plugin providePlugin() => _plugin;
 
   @provide
