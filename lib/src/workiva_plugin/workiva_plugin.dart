@@ -20,6 +20,7 @@ class WorkivaPlugin extends Plugin {
   @override
   void registerExtensionPoints(RegisterExtensionPoint register) {
     register(_container.getCommandExtensionPoint().extensionPoint);
+    register(_container.getContextExtensionPoint().extensionPoint);
     register(_container.getHandlerExtensionPoint().extensionPoint);
     register(_container.getMenuExtensionPoint().extensionPoint);
     register(_container.getViewExtensionPoint().extensionPoint);

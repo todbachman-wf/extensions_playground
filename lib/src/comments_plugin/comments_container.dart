@@ -21,10 +21,14 @@ abstract class Comments {
   CommentsView getCommentsView();
 
   @provide
-  @handlersExtensionPointId
+  @contextExtensionPointId
+  String getContextExtensionPointId();
+
+  @provide
+  @handlerExtensionPointId
   String getHandlersExtensionPointId();
 
   @provide
-  @viewsExtensionPointId
+  @viewExtensionPointId
   String getViewsExtensionPointId();
 }

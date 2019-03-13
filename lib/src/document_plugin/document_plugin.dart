@@ -16,6 +16,10 @@ class DocumentPlugin extends Plugin {
 
   @override
   void registerExtensions(RegisterExtension register) {
+    // contexts
+    register(_container.getContextExtensionPointId(),
+        new AbstractContext('document'));
+
     // handlers
     register(
         _container.getHandlersExtensionPointId(), _container.getBoldHandler());

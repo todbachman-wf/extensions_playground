@@ -1,8 +1,10 @@
 import 'package:extensions_playground/src/workiva_plugin/extension_points/command_extension_point.dart';
+import 'package:extensions_playground/src/workiva_plugin/extension_points/context_extension_point.dart';
 import 'package:extensions_playground/src/workiva_plugin/extension_points/handler_extension_point.dart';
 import 'package:extensions_playground/src/workiva_plugin/extension_points/menu_extension_point.dart';
 import 'package:extensions_playground/src/workiva_plugin/extension_points/view_extension_point.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/command_service.dart';
+import 'package:extensions_playground/src/workiva_plugin/services/context_service.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/handler_service.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/menu_service.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/view_service.dart';
@@ -26,6 +28,11 @@ class PlatformModule {
 
   @provide
   @singleton
+  ContextExtensionPoint provideContextExtensionPoint(Plugin plugin) =>
+      new ContextExtensionPoint(plugin);
+
+  @provide
+  @singleton
   HandlerExtensionPoint provideHandlerExtensionPoint(Plugin plugin) =>
       new HandlerExtensionPoint(plugin);
 
@@ -41,22 +48,29 @@ class PlatformModule {
 
   @provide
   @singleton
-  CommandService provideCommandService(CommandExtensionPoint commands) =>
-      new CommandServiceImpl(commands);
+  CommandService provideCommandService(CommandExtensionPoint extensionPoint) =>
+      new CommandServiceImpl(extensionPoint);
+
+  @provide
+  @singleton
+  ContextService provideContextService(ContextExtensionPoint extensionPoint) =>
+      new ContextServiceImpl(extensionPoint);
 
   @provide
   @singleton
   HandlerService provideHandlerService(
-          CommandService commandService, HandlerExtensionPoint handlers) =>
-      new HandlerServiceImpl(commandService, handlers);
+          CommandService commandService,
+          ContextService contextService,
+          HandlerExtensionPoint extensionPoint) =>
+      new HandlerServiceImpl(commandService, contextService, extensionPoint);
 
   @provide
   @singleton
-  MenuService provideMenuService(MenuExtensionPoint menus) =>
-      new MenuServiceImpl(menus);
+  MenuService provideMenuService(MenuExtensionPoint extensionPoint) =>
+      new MenuServiceImpl(extensionPoint);
 
   @provide
   @singleton
-  ViewService provideViewService(ViewExtensionPoint views) =>
-      new ViewServiceImpl(views);
+  ViewService provideViewService(ViewExtensionPoint extensionPoint) =>
+      new ViewServiceImpl(extensionPoint);
 }

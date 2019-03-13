@@ -31,7 +31,7 @@ abstract class Selection {
   SelectionCommand getItalicCommand();
 
   @provide
-  @commandsExtensionPointId
+  @commandExtensionPointId
   String getCommandsExtensionPointId();
 
   @provide

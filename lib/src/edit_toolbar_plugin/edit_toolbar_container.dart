@@ -17,6 +17,6 @@ abstract class EditToolbar {
   ItalicButton getItalicButton();
 
   @provide
-  @menusExtensionPointId
+  @menuExtensionPointId
   String getMenusExtensionPointId();
 }

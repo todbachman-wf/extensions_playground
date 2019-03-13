@@ -6,5 +6,5 @@ import 'package:plugin/plugin.dart';
 
 class ViewExtensionPoint extends WorkivaExtensionPoint<View> {
   @provide
-  ViewExtensionPoint(Plugin plugin) : super(plugin, viewsExtensionPointId);
+  ViewExtensionPoint(Plugin plugin) : super(plugin, viewExtensionPointId);
 }

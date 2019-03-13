@@ -6,6 +6,5 @@ import 'package:plugin/plugin.dart';
 
 class HandlerExtensionPoint extends WorkivaExtensionPoint<Handler> {
   @provide
-  HandlerExtensionPoint(Plugin plugin)
-      : super(plugin, handlersExtensionPointId);
+  HandlerExtensionPoint(Plugin plugin) : super(plugin, handlerExtensionPointId);
 }

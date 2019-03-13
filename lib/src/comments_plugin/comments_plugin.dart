@@ -16,10 +16,17 @@ class CommentsPlugin extends Plugin {
 
   @override
   void registerExtensions(RegisterExtension register) {
+    // contexts
+    register(_container.getContextExtensionPointId(),
+        new AbstractContext('comments'));
+
+    // handlers
     register(
         _container.getHandlersExtensionPointId(), _container.getBoldHandler());
     register(_container.getHandlersExtensionPointId(),
         _container.getItalicHandler());
+
+    // views
     register(
         _container.getViewsExtensionPointId(), _container.getCommentsView());
   }

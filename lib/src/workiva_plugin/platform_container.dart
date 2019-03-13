@@ -1,9 +1,11 @@
 import 'package:extensions_playground/src/workiva_plugin/extension_points/command_extension_point.dart';
+import 'package:extensions_playground/src/workiva_plugin/extension_points/context_extension_point.dart';
 import 'package:extensions_playground/src/workiva_plugin/extension_points/handler_extension_point.dart';
 import 'package:extensions_playground/src/workiva_plugin/extension_points/menu_extension_point.dart';
 import 'package:extensions_playground/src/workiva_plugin/extension_points/view_extension_point.dart';
 import 'package:extensions_playground/src/workiva_plugin/platform_module.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/command_service.dart';
+import 'package:extensions_playground/src/workiva_plugin/services/context_service.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/handler_service.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/menu_service.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/view_service.dart';
@@ -18,6 +20,7 @@ abstract class Platform {
 
     // Initialize the singleton services.
     commandService = platform.getCommandService();
+    contextService = platform.getContextService();
     handlerService = platform.getHandlerService();
     menuService = platform.getMenuService();
     viewService = platform.getViewService();
@@ -27,6 +30,9 @@ abstract class Platform {
 
   @provide
   CommandExtensionPoint getCommandExtensionPoint();
+
+  @provide
+  ContextExtensionPoint getContextExtensionPoint();
 
   @provide
   HandlerExtensionPoint getHandlerExtensionPoint();
@@ -39,6 +45,9 @@ abstract class Platform {
 
   @provide
   CommandService getCommandService();
+
+  @provide
+  ContextService getContextService();
 
   @provide
   HandlerService getHandlerService();

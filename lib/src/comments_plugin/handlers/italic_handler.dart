@@ -12,6 +12,9 @@ class ItalicHandler implements Handler {
   String get commandId => _commandId;
 
   @override
+  String get contextId => null;
+
+  @override
   void execute() {
     print('comments italic handler');
   }

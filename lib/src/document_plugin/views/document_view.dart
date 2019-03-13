@@ -4,8 +4,8 @@ import 'package:extensions_playground/selection_plugin.dart';
 import 'package:extensions_playground/workiva_plugin.dart';
 import 'package:inject/inject.dart';
 
-class FormattingView implements View {
-  DivElement _element;
+class DocumentView implements View {
+  TextAreaElement _element;
   final Uri _location = Uri.parse('view://workiva.rich.panels.right');
   String _docText = '''
   Call me Ishmael. Some years ago—never mind how long precisely—having little or 
@@ -26,19 +26,26 @@ class FormattingView implements View {
   ''';
 
   final SelectionService _selectionService;
+  final ContextService _contextService;
 
   @provide
-  FormattingView(this._selectionService) {
+  DocumentView(this._selectionService, this._contextService) {
     _selectionService.didChange.listen(_handleFormattingDidChange);
   }
 
   @override
   Element get component {
     if (_element == null) {
-      _element = new DivElement()
+      _element = new TextAreaElement()
         ..style.fontWeight = _getFontWeight()
         ..style.fontStyle = _getFontStyle()
+        ..style.width = '95%'
+        ..style.height = '300px'
         ..text = _docText;
+
+      _element.onFocus.listen((_) {
+        _contextService.activate('document');
+      });
     }
     return _element;
   }

@@ -1,5 +1,6 @@
 const String workivaPluginId = 'workiva';
-const String commandsExtensionPointId = 'commands';
-const String handlersExtensionPointId = 'handlers';
-const String menusExtensionPointId = 'menus';
-const String viewsExtensionPointId = 'views';
+const String commandExtensionPointId = 'commands';
+const String contextExtensionPointId = 'context';
+const String handlerExtensionPointId = 'handlers';
+const String menuExtensionPointId = 'menus';
+const String viewExtensionPointId = 'views';

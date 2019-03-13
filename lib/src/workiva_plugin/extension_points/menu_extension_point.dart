@@ -6,5 +6,5 @@ import 'package:plugin/plugin.dart';
 
 class MenuExtensionPoint extends WorkivaExtensionPoint<Menu> {
   @provide
-  MenuExtensionPoint(Plugin plugin) : super(plugin, menusExtensionPointId);
+  MenuExtensionPoint(Plugin plugin) : super(plugin, menuExtensionPointId);
 }

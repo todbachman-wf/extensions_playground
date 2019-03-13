@@ -1,7 +1,7 @@
 import 'package:extensions_playground/selection_plugin.dart';
 import 'package:extensions_playground/src/document_plugin/handlers/bold_handler.dart';
 import 'package:extensions_playground/src/document_plugin/handlers/italic_handler.dart';
-import 'package:extensions_playground/src/document_plugin/views/formatting_view.dart';
+import 'package:extensions_playground/src/document_plugin/views/document_view.dart';
 import 'package:extensions_playground/workiva_plugin.dart';
 import 'package:inject/inject.dart';
 
@@ -18,13 +18,17 @@ abstract class Document {
   ItalicHandler getItalicHandler();
 
   @provide
-  FormattingView getFormattingView();
+  DocumentView getFormattingView();
 
   @provide
-  @handlersExtensionPointId
+  @contextExtensionPointId
+  String getContextExtensionPointId();
+
+  @provide
+  @handlerExtensionPointId
   String getHandlersExtensionPointId();
 
   @provide
-  @viewsExtensionPointId
+  @viewExtensionPointId
   String getViewsExtensionPointId();
 }
