@@ -1,8 +1,13 @@
 import 'dart:html';
 
-import 'package:extensions_playground/src/workiva_plugin/services/menu_service.dart';
-import 'package:extensions_playground/src/workiva_plugin/services/view_service.dart';
+import 'package:extensions_playground/src/shell/shell_container.dart';
+import 'package:extensions_playground/workiva_plugin.dart';
 import 'package:inject/inject.dart';
+
+Future<Null> createShell() async {
+  var shell = await Shell.create(new PlatformServicesModule());
+  shell.getShell().render();
+}
 
 class AppShell {
   final MenuService _menuService;

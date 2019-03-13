@@ -1,12 +1,14 @@
 import 'dart:async';
 
-abstract class FormattingService {
+SelectionService selectionService;
+
+abstract class SelectionService {
   bool isBold;
   bool isItalic;
   Stream<Null> get didChange;
 }
 
-class FormattingServiceImpl implements FormattingService {
+class SelectionServiceImpl implements SelectionService {
   bool _isBold = false;
   bool _isItalic = false;
   StreamController<Null> _didChangeController =

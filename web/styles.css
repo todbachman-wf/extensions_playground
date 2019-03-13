@@ -19,6 +19,10 @@ html, body {
   flex: 0 1 auto;
 }
 
+#body {
+  flex: 1 1 auto;
+}
+
 .toolbar-item {
   flex: 0 1 auto;
   margin: 5px;
@@ -35,12 +39,9 @@ html, body {
   flex-direction: row;
 }
 
-#body, #panel-left, #panel-right {
-  flex: 1 1 auto;
-}
-
 #panel-left, #panel-right {
   display: flex;
+  flex: 1 1 25%;
   flex-direction: column;
 }
 
@@ -49,5 +50,5 @@ html, body {
 }
 
 #contents {
-  flex: 2 1 auto;
+  flex: 1 1 50%;
 }

@@ -1,5 +1,5 @@
 import 'package:extensions_playground/src/shell/shell.dart';
-import 'package:extensions_playground/src/workiva_plugin/platform_services_module.dart';
+import 'package:extensions_playground/workiva_plugin.dart';
 import 'package:inject/inject.dart';
 
 import 'shell_container.inject.dart' as generated;
