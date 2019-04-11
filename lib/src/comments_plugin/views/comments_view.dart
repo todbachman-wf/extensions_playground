@@ -9,7 +9,7 @@ class CommentsView implements View {
   final CommentsSelectionProvider _selectionProvider;
   Element _element;
   TextAreaElement _textArea;
-  final Uri _location = Uri.parse('view://workiva.rich.panels.left');
+  final Uri _location = Uri.parse('view://workiva.rich.panels.right');
 
   @provide
   CommentsView(this._selectionProvider, this._contextService) {

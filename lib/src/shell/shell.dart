@@ -18,6 +18,7 @@ class AppShell {
 
   void render() {
     _renderToolbars();
+    _renderContent();
     _renderPanel('left');
     _renderPanel('right');
   }
@@ -28,6 +29,17 @@ class AppShell {
     _menuService.getMenuItems('workiva.rich.toolbars.edit').forEach((element) {
       var wrapper = new DivElement()
         ..className = 'toolbar-item'
+        ..append(element);
+      target.append(wrapper);
+    });
+  }
+
+  void _renderContent() {
+    var target = querySelector('#contents');
+
+    _viewService.getViewItems('workiva.rich.content').forEach((element) {
+      var wrapper = new DivElement()
+        ..className = 'content-item'
         ..append(element);
       target.append(wrapper);
     });

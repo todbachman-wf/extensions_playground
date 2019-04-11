@@ -7,7 +7,7 @@ import 'package:inject/inject.dart';
 
 class DocumentView implements View {
   TextAreaElement _element;
-  final Uri _location = Uri.parse('view://workiva.rich.panels.right');
+  final Uri _location = Uri.parse('view://workiva.rich.content');
   String _docText = '''
   Call me Ishmael. Some years ago—never mind how long precisely—having little or 
   no money in my purse, and nothing particular to interest me on shore, I thought 
