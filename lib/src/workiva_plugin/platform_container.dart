@@ -1,10 +1,12 @@
 import 'package:extensions_playground/src/workiva_plugin/extension_points/command_extension_point.dart';
+import 'package:extensions_playground/src/workiva_plugin/extension_points/content_editor_factory_extension.dart';
 import 'package:extensions_playground/src/workiva_plugin/extension_points/context_extension_point.dart';
 import 'package:extensions_playground/src/workiva_plugin/extension_points/handler_extension_point.dart';
 import 'package:extensions_playground/src/workiva_plugin/extension_points/menu_extension_point.dart';
 import 'package:extensions_playground/src/workiva_plugin/extension_points/view_extension_point.dart';
 import 'package:extensions_playground/src/workiva_plugin/platform_module.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/command_service.dart';
+import 'package:extensions_playground/src/workiva_plugin/services/content_editor_service.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/context_service.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/handler_service.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/menu_service.dart';
@@ -20,6 +22,7 @@ abstract class Platform {
 
     // Initialize the singleton services.
     commandService = platform.getCommandService();
+    contentEditorService = platform.getContentEditorService();
     contextService = platform.getContextService();
     handlerService = platform.getHandlerService();
     menuService = platform.getMenuService();
@@ -30,6 +33,9 @@ abstract class Platform {
 
   @provide
   CommandExtensionPoint getCommandExtensionPoint();
+
+  @provide
+  ContentEditorFactoryExtensionPoint getContentEditorFactoryExtensionPoint();
 
   @provide
   ContextExtensionPoint getContextExtensionPoint();
@@ -45,6 +51,9 @@ abstract class Platform {
 
   @provide
   CommandService getCommandService();
+
+  @provide
+  ContentEditorService getContentEditorService();
 
   @provide
   ContextService getContextService();

@@ -1,13 +1,28 @@
 import 'dart:html' hide Platform;
 
-import 'package:extensions_playground/selection_plugin.dart';
 import 'package:extensions_playground/src/document_plugin/providers/document_selection_provider.dart';
 import 'package:extensions_playground/workiva_plugin.dart';
 import 'package:inject/inject.dart';
 
-class DocumentView implements View {
+class DocumentEditorFactory implements ContentEditorFactory<DocumentEditor> {
+  final DocumentSelectionProvider _selectionProvider;
+  final ContextService _contextService;
+
+  @provide
+  DocumentEditorFactory(this._selectionProvider, this._contextService);
+
+  @override
+  String get contentType => 'document';
+
+  @override
+  DocumentEditor create() =>
+      new DocumentEditor(_selectionProvider, _contextService);
+}
+
+class DocumentEditor implements ContentEditor {
+  static int _count = 0;
+  int _id;
   TextAreaElement _element;
-  final Uri _location = Uri.parse('view://workiva.rich.panels.right');
   String _docText = '''
   Call me Ishmael. Some years ago—never mind how long precisely—having little or 
   no money in my purse, and nothing particular to interest me on shore, I thought 
@@ -30,7 +45,8 @@ class DocumentView implements View {
   final ContextService _contextService;
 
   @provide
-  DocumentView(this._selectionProvider, this._contextService) {
+  DocumentEditor(this._selectionProvider, this._contextService)
+      : _id = _count++ {
     _selectionProvider.didChange.listen(_handleFormattingDidChange);
   }
 
@@ -52,7 +68,7 @@ class DocumentView implements View {
   }
 
   @override
-  Uri get location => _location;
+  String get identifier => '$_id';
 
   void _handleFormattingDidChange(Null _) {
     if (_element == null) return;

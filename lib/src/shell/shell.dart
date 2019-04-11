@@ -10,14 +10,16 @@ Future<Null> createShell() async {
 }
 
 class AppShell {
+  final ContentEditorService _contentEditorService;
   final MenuService _menuService;
   final ViewService _viewService;
 
   @provide
-  AppShell(this._menuService, this._viewService);
+  AppShell(this._menuService, this._viewService, this._contentEditorService);
 
   void render() {
     _renderToolbars();
+    _renderContent();
     _renderPanel('left');
     _renderPanel('right');
   }
@@ -29,6 +31,17 @@ class AppShell {
       var wrapper = new DivElement()
         ..className = 'toolbar-item'
         ..append(element);
+      target.append(wrapper);
+    });
+  }
+
+  void _renderContent() {
+    var target = querySelector('#contents');
+
+    _contentEditorService.contentEditors.forEach((editor) {
+      var wrapper = new DivElement()
+        ..className = 'content-item'
+        ..append(editor.component);
       target.append(wrapper);
     });
   }

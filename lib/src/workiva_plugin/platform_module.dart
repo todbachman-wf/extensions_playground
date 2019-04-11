@@ -1,9 +1,11 @@
 import 'package:extensions_playground/src/workiva_plugin/extension_points/command_extension_point.dart';
+import 'package:extensions_playground/src/workiva_plugin/extension_points/content_editor_factory_extension.dart';
 import 'package:extensions_playground/src/workiva_plugin/extension_points/context_extension_point.dart';
 import 'package:extensions_playground/src/workiva_plugin/extension_points/handler_extension_point.dart';
 import 'package:extensions_playground/src/workiva_plugin/extension_points/menu_extension_point.dart';
 import 'package:extensions_playground/src/workiva_plugin/extension_points/view_extension_point.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/command_service.dart';
+import 'package:extensions_playground/src/workiva_plugin/services/content_editor_service.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/context_service.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/handler_service.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/menu_service.dart';
@@ -24,6 +26,12 @@ class PlatformModule {
   @singleton
   CommandExtensionPoint provideCommandExtensionPoint(Plugin plugin) =>
       new CommandExtensionPoint(plugin);
+
+  @provide
+  @singleton
+  ContentEditorFactoryExtensionPoint provideContentEditorFactoryExtensionPoint(
+          Plugin plugin) =>
+      new ContentEditorFactoryExtensionPoint(plugin);
 
   @provide
   @singleton
@@ -49,6 +57,12 @@ class PlatformModule {
   @singleton
   CommandService provideCommandService(CommandExtensionPoint extensionPoint) =>
       new CommandServiceImpl(extensionPoint);
+
+  @provide
+  @singleton
+  ContentEditorService provideContentEditorService(
+          ContentEditorFactoryExtensionPoint extensionPoint) =>
+      new ContentEditorServiceImpl(extensionPoint);
 
   @provide
   @singleton
