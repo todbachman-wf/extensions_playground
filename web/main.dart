@@ -3,6 +3,7 @@ import 'package:extensions_playground/document_plugin.dart';
 import 'package:extensions_playground/edit_toolbar_plugin.dart';
 import 'package:extensions_playground/selection_plugin.dart';
 import 'package:extensions_playground/shell.dart';
+import 'package:extensions_playground/src/workiva_plugin/services/context.dart';
 import 'package:extensions_playground/workiva_plugin.dart';
 import 'package:plugin/manager.dart';
 

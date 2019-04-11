@@ -14,7 +14,8 @@ export 'src/workiva_plugin/services/content_editor.dart'
     show ContentEditor, ContentEditorFactory;
 export 'src/workiva_plugin/services/content_editor_service.dart'
     show ContentEditorService;
-export 'src/workiva_plugin/services/context.dart' show AbstractContext, Context;
+export 'src/workiva_plugin/services/context.dart'
+    show ContextTree, ContextNode, ContextTemplate, ContextConstants;
 export 'src/workiva_plugin/services/context_service.dart' show ContextService;
 export 'src/workiva_plugin/services/handler.dart' show Handler;
 export 'src/workiva_plugin/services/handler_service.dart' show HandlerService;

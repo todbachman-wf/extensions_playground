@@ -14,24 +14,28 @@ abstract class ContextService {
 
 class ContextServiceImpl implements ContextService {
   ContextExtensionPoint _contextExtensionPoint;
-  Context _activeContext;
+  ContextNode _activeContext;
   StreamController<Null> _didChangeController =
       new StreamController<Null>.broadcast();
 
+  final ContextTree _contextTree;
+
   @provide
-  ContextServiceImpl(this._contextExtensionPoint);
+  ContextServiceImpl(this._contextExtensionPoint) : _contextTree = new ContextTree();
 
   @override
   String get activeContextId => _activeContext.identifier;
 
   @override
   void activate(String contextId) {
-    var context = _contextExtensionPoint.extensionPoint.extensions.firstWhere(
+    final context = _contextExtensionPoint.extensionPoint.extensions.firstWhere(
         (extension) => extension.identifier == contextId,
         orElse: () => null);
 
-    if (context != null && context != _activeContext) {
-      _activeContext = context;
+    if (context != null && context.identifier != _activeContext?.identifier) {
+      final activeContext = _contextTree.getOrAddNode(context.identifier, context.parentIdentifier);
+      _activeContext = activeContext;
+
       _didChangeController.add(null);
     }
   }
