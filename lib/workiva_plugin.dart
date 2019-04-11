@@ -3,12 +3,17 @@ export 'src/workiva_plugin/extension_points/workiva_extension_point.dart'
 export 'src/workiva_plugin/platform_services_module.dart'
     show
         commandExtensionPointId,
+        contentEditorFactoryExtensionPointId,
         contextExtensionPointId,
         handlerExtensionPointId,
         menuExtensionPointId,
         viewExtensionPointId,
         PlatformServicesModule;
 export 'src/workiva_plugin/services/command.dart' show Command;
+export 'src/workiva_plugin/services/content_editor.dart'
+    show ContentEditor, ContentEditorFactory;
+export 'src/workiva_plugin/services/content_editor_service.dart'
+    show ContentEditorService;
 export 'src/workiva_plugin/services/context.dart' show AbstractContext, Context;
 export 'src/workiva_plugin/services/context_service.dart' show ContextService;
 export 'src/workiva_plugin/services/handler.dart' show Handler;

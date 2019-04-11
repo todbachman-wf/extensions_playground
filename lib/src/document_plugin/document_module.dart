@@ -2,7 +2,7 @@ import 'package:extensions_playground/selection_plugin.dart';
 import 'package:extensions_playground/src/document_plugin/handlers/bold_handler.dart';
 import 'package:extensions_playground/src/document_plugin/handlers/italic_handler.dart';
 import 'package:extensions_playground/src/document_plugin/providers/document_selection_provider.dart';
-import 'package:extensions_playground/src/document_plugin/views/document_view.dart';
+import 'package:extensions_playground/src/document_plugin/views/document_editor.dart';
 import 'package:extensions_playground/workiva_plugin.dart';
 import 'package:inject/inject.dart';
 
@@ -28,7 +28,8 @@ class DocumentModule {
 
   @provide
   @singleton
-  DocumentView provideDocumentView(DocumentSelectionProvider selectionProvider,
+  DocumentEditorFactory provideDocumentEditorFactory(
+          DocumentSelectionProvider selectionProvider,
           ContextService contextService) =>
-      new DocumentView(selectionProvider, contextService);
+      new DocumentEditorFactory(selectionProvider, contextService);
 }

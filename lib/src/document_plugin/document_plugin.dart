@@ -30,9 +30,9 @@ class DocumentPlugin extends Plugin {
     register(
         'selections.selection_provider', _container.getSelectionProvider());
 
-    // views
-    register(
-        _container.getViewsExtensionPointId(), _container.getDocumentView());
+    // editors
+    register(_container.getContentEditorFactoryExtensionPointId(),
+        _container.getDocumentEditorFactory());
   }
 
   @override

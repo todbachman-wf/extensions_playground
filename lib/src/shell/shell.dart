@@ -10,11 +10,12 @@ Future<Null> createShell() async {
 }
 
 class AppShell {
+  final ContentEditorService _contentEditorService;
   final MenuService _menuService;
   final ViewService _viewService;
 
   @provide
-  AppShell(this._menuService, this._viewService);
+  AppShell(this._menuService, this._viewService, this._contentEditorService);
 
   void render() {
     _renderToolbars();
@@ -37,10 +38,10 @@ class AppShell {
   void _renderContent() {
     var target = querySelector('#contents');
 
-    _viewService.getViewItems('workiva.rich.content').forEach((element) {
+    _contentEditorService.contentEditors.forEach((editor) {
       var wrapper = new DivElement()
         ..className = 'content-item'
-        ..append(element);
+        ..append(editor.component);
       target.append(wrapper);
     });
   }
