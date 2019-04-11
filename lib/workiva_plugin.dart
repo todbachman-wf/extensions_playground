@@ -9,7 +9,8 @@ export 'src/workiva_plugin/platform_services_module.dart'
         viewExtensionPointId,
         PlatformServicesModule;
 export 'src/workiva_plugin/services/command.dart' show Command;
-export 'src/workiva_plugin/services/context.dart' show AbstractContext, Context;
+export 'src/workiva_plugin/services/context.dart'
+    show ContextTree, AbstractContext, ContextNode, ContextTemplate, ContextConstants;
 export 'src/workiva_plugin/services/context_service.dart' show ContextService;
 export 'src/workiva_plugin/services/handler.dart' show Handler;
 export 'src/workiva_plugin/services/handler_service.dart' show HandlerService;

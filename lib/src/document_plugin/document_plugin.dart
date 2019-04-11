@@ -19,7 +19,7 @@ class DocumentPlugin extends Plugin {
   void registerExtensions(RegisterExtension register) {
     // contexts
     register(_container.getContextExtensionPointId(),
-        new AbstractContext('document'));
+        new ContextTemplate(ContextConstants.document, ContextConstants.root));
 
     // handlers
     register(

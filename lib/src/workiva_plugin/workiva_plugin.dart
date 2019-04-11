@@ -1,11 +1,14 @@
 import 'package:extensions_playground/src/workiva_plugin/constants.dart';
 import 'package:extensions_playground/src/workiva_plugin/platform_container.dart';
 import 'package:extensions_playground/src/workiva_plugin/platform_module.dart';
+import 'package:extensions_playground/src/workiva_plugin/services/context.dart';
 import 'package:plugin/plugin.dart';
 
 class WorkivaPlugin extends Plugin {
   Platform _container;
   PlatformModule _platformModule;
+
+  List<ContextTemplate> get contextExtensions => _container.getContextExtensionPoint().extensionPoint.extensions;
 
   @override
   final String uniqueIdentifier = workivaPluginId;
