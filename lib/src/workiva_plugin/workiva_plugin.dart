@@ -2,6 +2,7 @@ import 'package:extensions_playground/src/workiva_plugin/constants.dart';
 import 'package:extensions_playground/src/workiva_plugin/platform_container.dart';
 import 'package:extensions_playground/src/workiva_plugin/platform_module.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/context.dart';
+import 'package:extensions_playground/workiva_plugin.dart' hide handlerExtensionPointId;
 import 'package:plugin/plugin.dart';
 
 class WorkivaPlugin extends Plugin {
@@ -17,7 +18,7 @@ class WorkivaPlugin extends Plugin {
 
   Future<Null> init() async {
     _platformModule = new PlatformModule(this);
-    _container = await Platform.create(_platformModule);
+    _container = await Platform.create(_platformModule, new PlatformCommandsModule());
   }
 
   @override
@@ -31,5 +32,7 @@ class WorkivaPlugin extends Plugin {
   }
 
   @override
-  void registerExtensions(RegisterExtension register) {}
+  void registerExtensions(RegisterExtension register) {
+    register('$workivaPluginId.$handlerExtensionPointId', _container.getCreateDocumentHandler());
+  }
 }

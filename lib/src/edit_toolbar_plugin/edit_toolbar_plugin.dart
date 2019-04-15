@@ -11,7 +11,7 @@ class EditToolbarPlugin extends Plugin {
 
   Future<Null> init() async {
     _container = await EditToolbar.create(
-        new PlatformServicesModule(), new SelectionCommandsModule());
+        new PlatformServicesModule(), new SelectionCommandsModule(), new PlatformCommandsModule());
   }
 
   @override
@@ -19,6 +19,7 @@ class EditToolbarPlugin extends Plugin {
     register(_container.getMenusExtensionPointId(), _container.getBoldButton());
     register(
         _container.getMenusExtensionPointId(), _container.getItalicButton());
+    register(_container.getMenusExtensionPointId(), _container.getCreateDocumentButton());
   }
 
   @override
