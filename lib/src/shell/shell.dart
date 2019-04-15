@@ -15,11 +15,12 @@ class AppShell {
   final ViewService _viewService;
 
   @provide
-  AppShell(this._menuService, this._viewService, this._contentEditorService);
+  AppShell(this._menuService, this._viewService, this._contentEditorService) {
+    _contentEditorService.didCreateContentEditor.listen((e) => _renderContent(e));
+  }
 
   void render() {
     _renderToolbars();
-    _renderContent();
     _renderPanel('left');
     _renderPanel('right');
   }
@@ -35,15 +36,13 @@ class AppShell {
     });
   }
 
-  void _renderContent() {
+  void _renderContent(ContentEditor editor) {
     var target = querySelector('#contents');
 
-    _contentEditorService.contentEditors.forEach((editor) {
       var wrapper = new DivElement()
         ..className = 'content-item'
         ..append(editor.component);
       target.append(wrapper);
-    });
   }
 
   void _renderPanel(String orientation) {

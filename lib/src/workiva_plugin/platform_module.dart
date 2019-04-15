@@ -4,12 +4,14 @@ import 'package:extensions_playground/src/workiva_plugin/extension_points/contex
 import 'package:extensions_playground/src/workiva_plugin/extension_points/handler_extension_point.dart';
 import 'package:extensions_playground/src/workiva_plugin/extension_points/menu_extension_point.dart';
 import 'package:extensions_playground/src/workiva_plugin/extension_points/view_extension_point.dart';
+import 'package:extensions_playground/src/workiva_plugin/handlers/create_document_handler.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/command_service.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/content_editor_service.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/context_service.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/handler_service.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/menu_service.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/view_service.dart';
+import 'package:extensions_playground/src/workiva_plugin/commands/platform_commands.dart';
 import 'package:inject/inject.dart';
 import 'package:plugin/plugin.dart';
 
@@ -86,4 +88,7 @@ class PlatformModule {
   @singleton
   ViewService provideViewService(ViewExtensionPoint extensionPoint) =>
       new ViewServiceImpl(extensionPoint);
+
+  @provide
+  CreateDocumentHandler provideCreateDocumentHandler(@createDocumentCommandId String commandId, ContentEditorService editorService) => new CreateDocumentHandler(commandId, editorService);
 }

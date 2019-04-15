@@ -4,6 +4,7 @@ import 'package:extensions_playground/src/workiva_plugin/extension_points/contex
 import 'package:extensions_playground/src/workiva_plugin/extension_points/handler_extension_point.dart';
 import 'package:extensions_playground/src/workiva_plugin/extension_points/menu_extension_point.dart';
 import 'package:extensions_playground/src/workiva_plugin/extension_points/view_extension_point.dart';
+import 'package:extensions_playground/src/workiva_plugin/handlers/create_document_handler.dart';
 import 'package:extensions_playground/src/workiva_plugin/platform_module.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/command_service.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/content_editor_service.dart';
@@ -11,14 +12,15 @@ import 'package:extensions_playground/src/workiva_plugin/services/context_servic
 import 'package:extensions_playground/src/workiva_plugin/services/handler_service.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/menu_service.dart';
 import 'package:extensions_playground/src/workiva_plugin/services/view_service.dart';
+import 'package:extensions_playground/workiva_plugin.dart';
 import 'package:inject/inject.dart';
 
 import 'platform_container.inject.dart' as generated;
 
-@Injector(const [PlatformModule])
+@Injector(const [PlatformModule, PlatformCommandsModule])
 abstract class Platform {
-  static Future<Platform> create(PlatformModule platformModule) async {
-    var platform = await generated.Platform$Injector.create(platformModule);
+  static Future<Platform> create(PlatformModule platformModule, PlatformCommandsModule platformCommandsModule) async {
+    var platform = await generated.Platform$Injector.create(platformModule, platformCommandsModule);
 
     // Initialize the singleton services.
     commandService = platform.getCommandService();
@@ -66,4 +68,7 @@ abstract class Platform {
 
   @provide
   ViewService getViewService();
+
+  @provide
+  CreateDocumentHandler getCreateDocumentHandler();
 }

@@ -24,3 +24,5 @@ export 'src/workiva_plugin/services/menu_service.dart' show MenuService;
 export 'src/workiva_plugin/services/view.dart' show View;
 export 'src/workiva_plugin/services/view_service.dart' show ViewService;
 export 'src/workiva_plugin/workiva_plugin.dart' show WorkivaPlugin;
+export 'src/workiva_plugin/platform_commands_module.dart' show PlatformCommandsModule;
+export 'src/workiva_plugin/commands/platform_commands.dart';
